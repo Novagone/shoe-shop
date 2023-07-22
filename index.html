@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe Store</title>
+    <style>
+        /* Reset some default styles for consistency */
+        body, h1, h2, h3, p, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        header h1 {
+            margin: 0;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        nav li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav li a:hover {
+            color: #ddd;
+        }
+
+        main {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .shoe-card {
+            max-width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .shoe-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .shoe-card h3 {
+            margin-top: 10px;
+        }
+
+        .shoe-card p {
+            margin-top: 5px;
+        }
+
+        .shoe-card button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .shoe-card button:hover {
+            background-color: #0056b3;
+        }
+
+        aside.cart {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 250px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        aside.cart h2 {
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        aside.cart ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        aside.cart li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Shoe Store</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Men's Shoes</a></li>
+                <li><a href="#">Women's Shoes</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="products.html">Products</a></li>            
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="shoes-list">
+            <div class="shoe-card" data-id="1">
+                <img src="images/1.png" alt="Shoe 1">
+                <h3>Running Shoe 1</h3>
+                <p class="shoe-price">Price: $59.99</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <div class="shoe-card" data-id="2">
+                <img src="images/Thousand-Lakes-Store-air-jordan-1-retro-high-og-atmosphere-w-1.png" alt="Shoe 2">
+                <h3>Walking Shoe 2</h3>
+                <p class="shoe-price">Price: $49.99</p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
+
+            <!-- Add more shoe cards here for other products -->
+        </section>
+    </main>
+
+    <aside class="cart">
+        <h2>Shopping Cart</h2>
+        <ul id="cart-items">
+            <!-- Cart items will be added dynamically using JavaScript -->
+        </ul>
+        <p>Total: $<span id="cart-total">0.00</span></p>
+    </aside>
+
+    <footer>
+        <p>&copy; 2023 Shoe Store. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to update the shopping cart total
+        function updateCartTotal() {
+            const cartItems = document.querySelectorAll(".cart-item");
+            let total = 0;
+            cartItems.forEach((item) => {
+                const price = parseFloat(item.dataset.price);
+                total += price;
+            });
+            document.getElementById("cart-total").textContent = total.toFixed(2);
+        }
+
+        // Function to handle the "Add to Cart" button click event
+        function addToCart(event) {
+            const shoeCard = event.target.closest(".shoe-card");
+            const shoeName = shoeCard.querySelector("h3").textContent;
+            const shoePrice = parseFloat(shoeCard.querySelector(".shoe-price").textContent.replace("Price: $", ""));
+            const cartItems = document.getElementById("cart-items");
+            const cartItem = document.createElement("li");
+            cartItem.classList.add("cart-item");
+            cartItem.dataset.price = shoePrice;
+            cartItem.textContent = `${shoeName} - $${shoePrice.toFixed(2)}`;
+            cartItems.appendChild(cartItem);
+            updateCartTotal();
+        }
+
+        // Add "Add to Cart" button click event listeners to all buttons
+        const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+        addToCartButtons.forEach((button) => {
+            button.addEventListener("click", addToCart);
+        });
+    </script>
+</body>
+
+</html>

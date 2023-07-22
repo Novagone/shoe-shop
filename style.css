@@ -1,0 +1,136 @@
+/* Reset some default styles for consistency */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+header h1 {
+    margin: 0;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    color: #ddd;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* Add more CSS styles for your product cards and shoe listings */
+/* ... Previous CSS code ... */
+
+main {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.shoe-card {
+    max-width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.shoe-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.shoe-card h3 {
+    margin-top: 10px;
+}
+
+.shoe-card p {
+    margin-top: 5px;
+}
+
+.shoe-card button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.shoe-card button:hover {
+    background-color: #0056b3;
+}
+
+/* ... Remaining CSS code ... */
+/* ... Previous CSS code ... */
+
+aside.cart {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+aside.cart h2 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+aside.cart ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside.cart li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+/* ... Remaining CSS code ... */
